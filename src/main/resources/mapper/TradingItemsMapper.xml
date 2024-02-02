@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingsai.dingsaibackend.mapper.TradingItemsMapper">
+
+    <resultMap id="BaseResultMap" type="com.dingsai.dingsaibackend.model.entity.TradingItems">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="expectPrice" column="expect_price" jdbcType="DECIMAL"/>
+            <result property="topic" column="topic" jdbcType="VARCHAR"/>
+            <result property="elementRequirement" column="element_requirement" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="originalFileId" column="original_file_id" jdbcType="VARCHAR"/>
+            <result property="finishedFileId" column="finished_file_id" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,type,
+        expect_price,topic,element_requirement,
+        remark,original_file_id,finished_file_id,
+        create_time,update_time,status,
+        is_delete
+    </sql>
+</mapper>
