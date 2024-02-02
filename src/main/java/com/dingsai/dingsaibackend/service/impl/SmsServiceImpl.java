@@ -6,6 +6,7 @@ import com.aliyun.tea.TeaException;
 import com.dingsai.dingsaibackend.common.exception.BusinessException;
 import com.dingsai.dingsaibackend.common.response.ErrorCode;
 import com.dingsai.dingsaibackend.service.SmsService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,12 @@ public class SmsServiceImpl implements SmsService {
     
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+    
+    @Value("${aliyun.accessKeyId}")
+    private String accessKeyId;
+
+    @Value("${aliyun.accessKeySecret}")
+    private String accessKeySecret;
 
     /**
      * 发送短信
@@ -40,9 +47,9 @@ public class SmsServiceImpl implements SmsService {
 
         com.aliyun.teaopenapi.models.Config config = new com.aliyun.teaopenapi.models.Config()
                 // 必填，您的 AccessKey ID
-                .setAccessKeyId("LTAI5tGPD6q12AYX4WUcHRay")
+                .setAccessKeyId(accessKeyId)
                 // 必填，您的 AccessKey Secret
-                .setAccessKeySecret("fX2lUfih1cqAJ7BrsjzPlJucwkimrx");
+                .setAccessKeySecret(accessKeySecret);
         config.endpoint = "dysmsapi.aliyuncs.com";
 
         Client client;
